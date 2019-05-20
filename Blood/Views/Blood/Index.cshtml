@@ -1,0 +1,99 @@
+﻿@model IEnumerable<Blood.ViewModel.DisplayViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pesel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BloodGroup)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BloodType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().EventBloods.FirstOrDefault().DonatedBlood)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().EventBloods.FirstOrDefault().Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sum)
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pesel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BloodGroup)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BloodType)
+            </td>
+            <td>
+                @foreach (var item1 in item.EventBloods)
+                {
+                    <table>
+                        <tr>
+                            <td>
+
+                                @Html.DisplayFor(modelItem => item1.Date)
+                            </td>
+                        </tr>
+                    </table>
+
+
+                }
+            </td>
+           
+            <td>
+                @foreach (var item2 in item.EventBloods)
+                {
+                    <table>
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item2.DonatedBlood)
+                            </td>
+                        </tr>
+                    </table>
+
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sum)
+            </td>
+
+
+        </tr>
+}
+    </tbody>
+</table>
+
