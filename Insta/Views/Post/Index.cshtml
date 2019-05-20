@@ -1,0 +1,91 @@
+﻿@model IEnumerable<Insta.ViewModels.DisplayPostViewModel>
+@{
+    ViewData["Title"] = "Index";
+}
+<h2>Index</h2>
+<p>
+    <a asp-action="Create">Post New Photo</a>
+</p>
+
+@foreach (var post in Model)
+{
+    
+    <div class="row">
+        <div class="col-md-4">
+            <h3>@post.Title</h3>
+            @foreach (var tag in post.Tags)
+            {
+                <span class="btn btn-primary">@tag</span>
+            }
+
+            <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                <!-- Indicators -->
+                <ol class="carousel-indicators">
+                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                    @for (int i = 1; i < post.PhotoPath.Count; i++)
+                    {
+                        <li data-target="#myCarousel" data-slide-to="@i"></li>
+                    }
+                </ol>
+
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner">
+
+                    <div class="item active">
+
+                        <img src="@post.PhotoPath[0]" />
+                    </div>
+
+                    @for (int i = 1; i < post.PhotoPath.Count; i++)
+                    {
+                        <div class="item ">
+
+                            <img src="@post.PhotoPath[i]" />
+                        </div>
+                    }
+                </div>
+
+                <!-- Left and right controls -->
+                <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+}
+
+
+
+
+
+@*<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+
+            <div class="carousel-item active">
+                <img class="d-block w-100" src="@post.PhotoPath[0]" alt="">
+            </div>
+
+
+            @for (int i = 1; i < post.PhotoPath.Count; i++)
+            {
+                <div class="carousel-item ">
+                    <img class="d-block w-100" src="@post.PhotoPath[i]" alt="">
+                </div>
+            }
+
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>*@
