@@ -1,0 +1,2 @@
+E:\VIsemestr\AspNet\ConsoleApp2\obj\Debug\ConsoleApp2.csprojResolveAssemblyReference.cache
+E:\VIsemestr\AspNet\ConsoleApp2\obj\Debug\ConsoleApp2.csproj.CoreCompileInputs.cache
