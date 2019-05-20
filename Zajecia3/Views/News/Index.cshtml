@@ -1,0 +1,23 @@
+﻿
+<div>
+
+        @model List<Zajecia3.Models.RSSItem>
+
+        @{
+            ViewBag.Title = "Index";
+        }
+        <h2>Newsy</h2>
+
+        @foreach (var Item in Model)
+        {
+
+            <h3>@Item.Title </h3>
+            <span>@Item.PubDate </span>
+            <p>@Html.Raw(Item.Description) </p>
+            <p><a href="@Item.Link" target="_blank">@Item.Link</a></p>
+        }
+
+
+    </div>
+
+
